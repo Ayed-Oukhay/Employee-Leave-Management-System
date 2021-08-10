@@ -1,0 +1,84 @@
+{
+  "name": "Salarie",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "manager",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "Role",
+      "fieldValues": "ROLE_ADMIN,ROLE_USER"
+    },
+    {
+      "fieldName": "actif",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "iDEntreprise",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lDAPPath",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "demandeConge",
+      "otherEntityRelationshipName": "salarie",
+      "relationshipName": "demandeConge"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "contrat",
+      "otherEntityRelationshipName": "salarie",
+      "relationshipName": "contrat"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "departement",
+      "otherEntityRelationshipName": "salarie",
+      "relationshipName": "departement",
+      "otherEntityField": "nom"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "poste",
+      "otherEntityRelationshipName": "salarie",
+      "relationshipName": "poste",
+      "otherEntityField": "nom"
+    }
+  ],
+  "entityTableName": "salarie",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210808214740"
+}

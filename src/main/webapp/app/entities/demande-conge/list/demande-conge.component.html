@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="DemandeCongeHeading">
+    <span jhiTranslate="stageApp.demandeConge.home.title">Demande Conges</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="stageApp.demandeConge.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-demande-conge"
+        [routerLink]="['/demande-conge/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="stageApp.demandeConge.home.createLabel"> Create a new Demande Conge </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="demandeConges?.length === 0">
+    <span jhiTranslate="stageApp.demandeConge.home.notFound">No demandeConges found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="demandeConges && demandeConges.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateDebut">
+            <span jhiTranslate="stageApp.demandeConge.dateDebut">Date Debut</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateFin">
+            <span jhiTranslate="stageApp.demandeConge.dateFin">Date Fin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="duree">
+            <span jhiTranslate="stageApp.demandeConge.duree">Duree</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="raison">
+            <span jhiTranslate="stageApp.demandeConge.raison">Raison</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="etat"><span jhiTranslate="stageApp.demandeConge.etat">Etat</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="typeConge.nom">
+            <span jhiTranslate="stageApp.demandeConge.typeConge">Type Conge</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="salarie.id">
+            <span jhiTranslate="stageApp.demandeConge.salarie">Salarie</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demandeConge of demandeConges; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/demande-conge', demandeConge.id, 'view']">{{ demandeConge.id }}</a>
+          </td>
+          <td>{{ demandeConge.dateDebut | formatMediumDate }}</td>
+          <td>{{ demandeConge.dateFin | formatMediumDate }}</td>
+          <td>{{ demandeConge.duree }}</td>
+          <td>{{ demandeConge.raison }}</td>
+          <td jhiTranslate="{{ 'stageApp.Etat.' + demandeConge.etat }}">{{ demandeConge.etat }}</td>
+          <td>
+            <div *ngIf="demandeConge.typeConge">
+              <a [routerLink]="['/type-conge', demandeConge.typeConge?.id, 'view']">{{ demandeConge.typeConge?.nom }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="demandeConge.salarie">
+              <a [routerLink]="['/salarie', demandeConge.salarie?.id, 'view']">{{ demandeConge.salarie?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/demande-conge', demandeConge.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/demande-conge', demandeConge.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(demandeConge)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="demandeConges && demandeConges.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

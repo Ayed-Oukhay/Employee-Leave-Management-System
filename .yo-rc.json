@@ -43,7 +43,9 @@
     "devServerPort": 4200,
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Salarie", "Departement", "Poste", "Contrat", "TypeContrat", "DemandeConge", "TypeConge"],
+    "lastLiquibaseTimestamp": 1628459266000
   },
   "git-provider": "GitHub",
   "git-company": "Ayed-Oukhay",

@@ -1,0 +1,9 @@
+{
+  "stageApp": {
+    "Role": {
+      "null": "",
+      "ROLE_ADMIN": "ROLE_ADMIN",
+      "ROLE_USER": "ROLE_USER"
+    }
+  }
+}

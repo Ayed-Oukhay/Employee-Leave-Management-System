@@ -1,0 +1,25 @@
+{
+  "stageApp": {
+    "contrat": {
+      "home": {
+        "title": "Contrats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contrat",
+        "createOrEditLabel": "Create or edit a Contrat",
+        "notFound": "No Contrats found"
+      },
+      "created": "A new Contrat is created with identifier {{ param }}",
+      "updated": "A Contrat is updated with identifier {{ param }}",
+      "deleted": "A Contrat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contrat {{ id }}?"
+      },
+      "detail": {
+        "title": "Contrat"
+      },
+      "id": "ID",
+      "typeContrat": "Type Contrat",
+      "salarie": "Salarie"
+    }
+  }
+}

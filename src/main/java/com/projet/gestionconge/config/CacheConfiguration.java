@@ -48,6 +48,17 @@ public class CacheConfiguration {
             createCache(cm, com.projet.gestionconge.domain.User.class.getName());
             createCache(cm, com.projet.gestionconge.domain.Authority.class.getName());
             createCache(cm, com.projet.gestionconge.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.projet.gestionconge.domain.Salarie.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.Salarie.class.getName() + ".demandeConges");
+            createCache(cm, com.projet.gestionconge.domain.Salarie.class.getName() + ".contrats");
+            createCache(cm, com.projet.gestionconge.domain.Departement.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.Departement.class.getName() + ".salaries");
+            createCache(cm, com.projet.gestionconge.domain.Poste.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.Contrat.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.TypeContrat.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.DemandeConge.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.TypeConge.class.getName());
+            createCache(cm, com.projet.gestionconge.domain.Departement.class.getName() + ".superviseurs");
             // jhipster-needle-ehcache-add-entry
         };
     }

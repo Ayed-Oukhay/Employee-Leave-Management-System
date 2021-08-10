@@ -1,0 +1,139 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-salarie-heading" data-cy="SalarieCreateUpdateHeading" jhiTranslate="stageApp.salarie.home.createOrEditLabel">
+        Create or edit a Salarie
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.prenom" for="field_prenom">Prenom</label>
+          <input type="text" class="form-control" name="prenom" id="field_prenom" data-cy="prenom" formControlName="prenom" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.login" for="field_login">Login</label>
+          <input type="text" class="form-control" name="login" id="field_login" data-cy="login" formControlName="login" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.manager" for="field_manager">Manager</label>
+          <input type="text" class="form-control" name="manager" id="field_manager" data-cy="manager" formControlName="manager" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.role" for="field_role">Role</label>
+          <select class="form-control" name="role" formControlName="role" id="field_role" data-cy="role">
+            <option [ngValue]="null">{{ 'stageApp.Role.null' | translate }}</option>
+            <option value="ROLE_ADMIN">{{ 'stageApp.Role.ROLE_ADMIN' | translate }}</option>
+            <option value="ROLE_USER">{{ 'stageApp.Role.ROLE_USER' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.actif" for="field_actif">Actif</label>
+          <input type="checkbox" class="form-check" name="actif" id="field_actif" data-cy="actif" formControlName="actif" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="input-group">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="text"
+              class="form-control"
+              name="dateDebut"
+              ngbDatepicker
+              #dateDebutDp="ngbDatepicker"
+              formControlName="dateDebut"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.iDEntreprise" for="field_iDEntreprise">I D Entreprise</label>
+          <input
+            type="number"
+            class="form-control"
+            name="iDEntreprise"
+            id="field_iDEntreprise"
+            data-cy="iDEntreprise"
+            formControlName="iDEntreprise"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.lDAPPath" for="field_lDAPPath">L DAP Path</label>
+          <input type="text" class="form-control" name="lDAPPath" id="field_lDAPPath" data-cy="lDAPPath" formControlName="lDAPPath" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.departement" for="field_departement">Departement</label>
+          <select class="form-control" id="field_departement" data-cy="departement" name="departement" formControlName="departement">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                departementOption.id === editForm.get('departement')!.value?.id ? editForm.get('departement')!.value : departementOption
+              "
+              *ngFor="let departementOption of departementsSharedCollection; trackBy: trackDepartementById"
+            >
+              {{ departementOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.poste" for="field_poste">Poste</label>
+          <select class="form-control" id="field_poste" data-cy="poste" name="poste" formControlName="poste">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="posteOption.id === editForm.get('poste')!.value?.id ? editForm.get('poste')!.value : posteOption"
+              *ngFor="let posteOption of postesSharedCollection; trackBy: trackPosteById"
+            >
+              {{ posteOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
