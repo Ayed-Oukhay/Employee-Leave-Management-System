@@ -1,19 +1,47 @@
 {
   "global": {
-    "title": "Stage",
+    "title": "Syst. Ge Gestion Des Conges",
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-      "entities": {
-        "main": "Entités",
-        "salarie": "Salarie",
+      "administration": {
+        "main": "Admin",
+        "salarie": "Liste des salaries",
+        "typeConge": "Liste des types de conge",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "hr": {
+        "main": "RH",
+        "salarie": "Liste des employes",
         "departement": "Departement",
-        "poste": "Poste",
-        "contrat": "Contrat",
-        "typeContrat": "Type Contrat",
-        "demandeConge": "Demande Conge",
-        "typeConge": "Type Conge",
+        "poste": "Liste des postes",
+        "contrat": "Liste des contrats",
+        "rapport": "Rapport des conges",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "validation": {
+        "main": "Validation",
+        "delegation": "Delegations",
+        "collaborateur": "My collaborators",
+        "conges": "List of leaves",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "demandes": {
+        "main": "Demandes",
+        "conge": "Liste des demandes de conge",
+        "demandeConge": "Demander un conger",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "calendrier": {
+        "main": "Calendar",
+        "monCalendrier": "My Calendar",
+        "annuel": "Yearly Calendar",
+        "collegue": "My Workmates",
+        "collaborateur": "My Collaborators",
+        "departement": "Departement",
+        "global": "Global",
+        "tabulaire": "Tabular",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
