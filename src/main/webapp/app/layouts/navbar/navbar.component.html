@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
     <span class="logo-img"></span>
@@ -29,12 +30,70 @@
       <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
       <li
         *ngSwitchCase="true"
+=======
+<header id="header" class="header fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between" data-cy="navbar" >
+
+    <a routerLink="/" (click)="collapseNavbar()" class="logo d-flex align-items-center">
+      <span class="logo-img"></span>
+      <!-- <span jhiTranslate="global.title" class="navbar-title">Leave management system</span> -->
+    </a>
+    <!-- Beginning the navbar -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        <!-- Beginning the home Menu -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/" (click)="collapseNavbar()" class="nav-link scrollto active">
+            <span>
+            <fa-icon icon="home"></fa-icon>
+            <span jhiTranslate="global.menu.home">Home</span>
+          </span></a>
+        </li>
+        <!-- End home Menu -->
+
+        <!-- Beginning the Admin Menu -->
+        <li class="dropdown" 
+        *jhiHasAnyAuthority="'ROLE_ADMIN'"
         ngbDropdown
         class="nav-item dropdown pointer"
         display="dynamic"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+        [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <fa-icon icon="users-cog"></fa-icon>
+          <span jhiTranslate="global.menu.administration.main">Admin</span>
+          <i class="bi bi-chevron-down"></i></a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a class="dropdown-item"
+              routerLink="salarie"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()">
+              <fa-icon icon="user" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.administration.salarie" style="padding-left: 10px;">List of users</span>
+            </a></li>
+            <li><a class="dropdown-item"
+              routerLink="type-conge"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()" >
+              <fa-icon icon="list-ul" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.administration.typeConge">List of leave types</span>
+            </a></li>
+          </ul>
+        </li>
+        <!-- End Admin Menu -->
+
+        <!-- Beginning the HR Menu -->
+        <li class="dropdown" 
+        *jhiHasAnyAuthority="'ROLE_ADMIN'"
+>>>>>>> Stashed changes
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
           <span>
             <fa-icon icon="th-list"></fa-icon>
@@ -42,14 +101,12 @@
           </span>
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-          <li>
-            <a
-              class="dropdown-item"
+            <li>
+              <a class="dropdown-item"
               routerLink="salarie"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
-              (click)="collapseNavbar()"
-            >
+              (click)="collapseNavbar()">
               <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
               <span jhiTranslate="global.menu.entities.salarie">Salarie</span>
             </a>
@@ -84,6 +141,7 @@
               routerLink="contrat"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
+<<<<<<< Updated upstream
               (click)="collapseNavbar()"
             >
               <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
@@ -184,6 +242,223 @@
         </ul>
       </li>
       <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
+=======
+              (click)="collapseNavbar()">
+              <fa-icon icon="file" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.hr.rapport">Leave report</span>
+            </a>
+          </li>
+          </ul>
+        </li>
+        <!-- End HR Menu -->
+
+        <!-- Beginning the Validation drop down menu  -->
+      <li
+      class="dropdown" 
+      *jhiHasAnyAuthority="'ROLE_ADMIN'"
+      ngbDropdown
+      class="nav-item dropdown pointer"
+      display="dynamic"
+      routerLinkActive=""
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+        <span>
+          <fa-icon icon="check"></fa-icon>
+          <span jhiTranslate="global.menu.validation.main">Validation</span>
+        </span>
+      </a>
+      <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="backspace" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.validation.delegation">Delegations</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.validation.collaborateur">My collaborators</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="demande-conge"
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="list-alt" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.validation.conges">List of leaves</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Validation menu -->
+
+    <!-- Beginning the Requests Menu -->
+    <li 
+    *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']"
+    class="dropdown" 
+    ngbDropdown
+    class="nav-item dropdown pointer"
+    display="dynamic"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+      <span>
+        <fa-icon icon="th-list"></fa-icon>
+        <span jhiTranslate="global.menu.demandes.main">Requests</span>
+      </span>
+    </a>
+      <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="demande-conge"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()">
+            <fa-icon icon="comment-alt" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.demandes.conge">List of leave requests</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="demande-conge"
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()">
+            <fa-icon icon="plus" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.demandes.demandeConge">Request a leave</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Requests Menu -->
+
+    <!-- Beginning the Calendar Menu -->
+    <li 
+    *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']"
+    class="dropdown" 
+    ngbDropdown
+    class="nav-item dropdown pointer"
+    display="dynamic"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+      <span>
+        <fa-icon icon="calendar-alt"></fa-icon>
+        <span jhiTranslate="global.menu.calendrier.main">Calendar</span>
+      </span>
+    </a>
+      <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="user-check" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.monCalendrier">My calendar</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="globe" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.annuel">Annual calendar</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="users" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.collegue">My workmates</span>
+          </a>
+        </li>
+        <li>
+          <a
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.collaborateur">My collaborators</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="building" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.departement">Departement</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="calendar-alt" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.global">Global</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink=""
+            routerLinkActive=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="collapseNavbar()"
+          >
+            <fa-icon icon="table" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.calendrier.tabulaire">Tabular</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Calendar Menu -->
+
+        <!-- Language menu -->
+      <li ngbDropdown class="dropdown"  display="dynamic" *ngIf="languages && languages.length > 1">
+>>>>>>> Stashed changes
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
           <span>
             <fa-icon icon="flag"></fa-icon>
@@ -202,6 +477,7 @@
           </li>
         </ul>
       </li>
+<<<<<<< Updated upstream
       <li
         ngbDropdown
         class="nav-item dropdown pointer"
@@ -260,3 +536,57 @@
     </ul>
   </div>
 </nav>
+=======
+      <!-- End Language menu -->
+
+      <!-- Beginning the Account Menu -->
+    <li class="dropdown" 
+    ngbDropdown
+    class="nav-item dropdown pointer"
+    display="dynamic"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+      <span>
+        <fa-icon icon="user"></fa-icon>
+        <span jhiTranslate="global.menu.account.main">Account</span>
+      </span>
+    </a>
+      <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+         
+        <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">
+          <a
+            class="dropdown-item"
+            routerLink="account/password"
+            routerLinkActive="active"
+            (click)="collapseNavbar()"
+            data-cy="passwordItem"
+          >
+            <fa-icon icon="lock" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.account.password">Change password</span>
+          </a>
+        </li>
+        <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">
+          <a class="dropdown-item" (click)="logout()" id="logout" data-cy="logout">
+            <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.account.logout">Sign out</span>
+          </a>
+        </li>
+        <li *jhiHasAnyAuthority="''">
+          <a class="dropdown-item" (click)="login()" id="login" data-cy="login">
+            <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
+            <span jhiTranslate="global.menu.account.login">Sign in</span>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    <!-- End Account Menu -->
+
+      </ul>
+      </nav>
+    </div>
+</header>
+<br><br><br><br><br>
+<!-- End Header -->
+>>>>>>> Stashed changes

@@ -1,9 +1,9 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-salarie-heading" data-cy="SalarieCreateUpdateHeading" jhiTranslate="stageApp.salarie.home.createOrEditLabel">
+      <!-- <h2 id="jhi-salarie-heading" data-cy="SalarieCreateUpdateHeading" jhiTranslate="stageApp.salarie.home.createOrEditLabel">
         Create or edit a Salarie
-      </h2>
+      </h2> -->
 
       <div>
         <jhi-alert-error></jhi-alert-error>
@@ -130,8 +130,9 @@
           data-cy="entityCreateSaveButton"
           [disabled]="editForm.invalid || isSaving"
           class="btn btn-primary"
+          style="background-color: #0052cc;"
         >
-          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+          <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
       </div>
     </form>

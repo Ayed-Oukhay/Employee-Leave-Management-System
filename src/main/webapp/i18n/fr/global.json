@@ -1,10 +1,15 @@
 {
   "global": {
+<<<<<<< Updated upstream
     "title": "Stage",
+=======
+    "title": "Gestion Des Conges",
+>>>>>>> Stashed changes
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+<<<<<<< Updated upstream
       "entities": {
         "main": "Entités",
         "salarie": "Salarie",
@@ -14,6 +19,45 @@
         "typeContrat": "Type Contrat",
         "demandeConge": "Demande Conge",
         "typeConge": "Type Conge",
+=======
+      "administration": {
+        "main": "Admin",
+        "salarie": "Liste des salaries",
+        "typeConge": "Liste des types de conge",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "hr": {
+        "main": "RH",
+        "salarie": "Liste des employes",
+        "departement": "Departement",
+        "poste": "Liste des postes",
+        "contrat": "Liste des contrats",
+        "rapport": "Rapport des conges",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "validation": {
+        "main": "Validation",
+        "delegation": "Delegations",
+        "collaborateur": "Mes collaborateurs",
+        "conges": "Demandes de conge",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "demandes": {
+        "main": "Demandes",
+        "conge": "Liste des demandes de conge",
+        "demandeConge": "Demander un conger",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "calendrier": {
+        "main": "Calendrier",
+        "monCalendrier": "Mon Calendrier",
+        "annuel": "Calendrier Annuel",
+        "collegue": "Mes Collegues",
+        "collaborateur": "Mes Collaborateurs",
+        "departement": "Departement",
+        "global": "Global",
+        "tabulaire": "Tabulaire",
+>>>>>>> Stashed changes
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
