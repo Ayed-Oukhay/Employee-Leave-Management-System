@@ -39,6 +39,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'stageApp.typeConge.home.title' },
         loadChildren: () => import('./type-conge/type-conge.module').then(m => m.TypeCongeModule),
       },
+      {
+        path: 'validation-demande-conge',
+        data: { pageTitle: 'stageApp.demandeConge.home.title' },
+        loadChildren: () => import('./validation-demande-conge/validation-demande-conge.module').then(m => m.DemandeCongeModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

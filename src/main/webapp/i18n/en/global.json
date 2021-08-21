@@ -1,19 +1,47 @@
 {
   "global": {
-    "title": "Stage",
+    "title": "Leave Management System",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-      "entities": {
-        "main": "Entities",
-        "salarie": "Salarie",
+      "administration": {
+        "main": "Admin",
+        "salarie": "List of users",
+        "typeConge": "List of leave types",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "hr": {
+        "main": "HR",
+        "salarie": "List of employees",
+        "departement": "Organization",
+        "poste": "List of positions",
+        "contrat": "List of contracts",
+        "rapport": "Leaves report",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "validation": {
+        "main": "Validation",
+        "delegation": "Delegations",
+        "collaborateur": "My collaborators",
+        "conges": "List of leaves",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "demandes": {
+        "main": "Requests",
+        "conge": "List of leave requests",
+        "demandeConge": "Request a leave",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "calendrier": {
+        "main": "Calendar",
+        "monCalendrier": "My Calendar",
+        "annuel": "Yearly Calendar",
+        "collegue": "My Workmates",
+        "collaborateur": "My Collaborators",
         "departement": "Departement",
-        "poste": "Poste",
-        "contrat": "Contrat",
-        "typeContrat": "Type Contrat",
-        "demandeConge": "Demande Conge",
-        "typeConge": "Type Conge",
+        "global": "Global",
+        "tabulaire": "Tabular",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

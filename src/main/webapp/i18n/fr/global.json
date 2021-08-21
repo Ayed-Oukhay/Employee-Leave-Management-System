@@ -1,25 +1,10 @@
 {
   "global": {
-<<<<<<< Updated upstream
-    "title": "Stage",
-=======
     "title": "Gestion Des Conges",
->>>>>>> Stashed changes
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-<<<<<<< Updated upstream
-      "entities": {
-        "main": "Entités",
-        "salarie": "Salarie",
-        "departement": "Departement",
-        "poste": "Poste",
-        "contrat": "Contrat",
-        "typeContrat": "Type Contrat",
-        "demandeConge": "Demande Conge",
-        "typeConge": "Type Conge",
-=======
       "administration": {
         "main": "Admin",
         "salarie": "Liste des salaries",
@@ -57,7 +42,6 @@
         "departement": "Departement",
         "global": "Global",
         "tabulaire": "Tabulaire",
->>>>>>> Stashed changes
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

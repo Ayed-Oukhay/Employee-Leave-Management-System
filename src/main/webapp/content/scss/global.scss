@@ -21,6 +21,27 @@ h4 {
   background-color: #fff;
 }
 
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #1a214d;
+  border-color: #1a214d;
+}
+
+.row-md.jh-entity-details > dt {
+  float: left;
+  overflow: hidden;
+  clear: left;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0.5em 0;
+}
+
+.table-responsive {
+  box-shadow: 3px 3px 2px #ccc;
+}
+
 /* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
 a {
   color: #533f03;
@@ -90,9 +111,39 @@ Generic styles
 
 .formulaire-wrapper {
   align-self: center;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 8%);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 12%);
+}
+
+.btn-login {
+  border-radius: 10px;
+    align-self: center;
+    display: inline-flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    margin: 1px;
+    background-color: #27274e;
+    width: 100%;
+    color: #fff;
+}
+
+.btn-primary{
+  border-radius: 10px;
+}
+
+.btn-info{
+  border-radius: 10px;
+}
+
+.btn-secondary{
+  border-radius: 10px;
+}
+
+.btn-danger{
+  border-radius: 10px;
 }
 
 .ng-invalid:not(form) {
