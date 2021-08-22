@@ -1,0 +1,37 @@
+{
+  "stageApp": {
+    "salarie": {
+      "home": {
+        "title": "Salaries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Salarie",
+        "createOrEditLabel": "Create or edit a Salarie",
+        "notFound": "No Salaries found"
+      },
+      "created": "A new Salarie is created with identifier {{ param }}",
+      "updated": "A Salarie is updated with identifier {{ param }}",
+      "deleted": "A Salarie is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Salarie {{ id }}?"
+      },
+      "detail": {
+        "title": "Salarie"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "login": "Login",
+      "email": "Email",
+      "manager": "Manager",
+      "role": "Role",
+      "actif": "Actif",
+      "dateDebut": "Date Debut",
+      "iDEntreprise": "I D Entreprise",
+      "lDAPPath": "L DAP Path",
+      "demandeConge": "Demande Conge",
+      "contrat": "Contrat",
+      "departement": "Departement",
+      "poste": "Poste"
+    }
+  }
+}

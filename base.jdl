@@ -1,0 +1,93 @@
+/* --------------- Entites ------------- */
+entity Salarie {
+	Nom String
+    Prenom String
+    Login String
+    Email String
+    Manager String
+    Role Role
+    Actif Boolean
+    DateDebut LocalDate
+    IDEntreprise Long
+    LDAPPath String
+}
+
+entity Departement {
+    Nom String
+}
+
+entity Poste {
+	Nom String
+    Description String
+}
+
+entity Contrat {
+	
+}
+
+entity TypeContrat {
+	Nom String
+}
+
+entity DemandeConge {
+	DateDebut LocalDate
+    DateFin LocalDate
+    Duree Float 
+    Raison String
+    Etat Etat
+}
+
+entity TypeConge {
+	Nom String
+}
+
+enum Etat {
+	Accepte,
+    Refuse,
+    En_cours_de_traitement
+}
+
+
+enum Role {
+	ROLE_ADMIN,
+    ROLE_USER
+}
+
+enum Language {
+    FRENCH, ENGLISH
+}
+
+/*----------- Relations -----------*/ 
+relationship ManyToOne {
+    Salarie{Departement(Nom)} to Departement,
+    Salarie{Poste(Nom)} to Poste,
+    DemandeConge{TypeConge(Nom)} to TypeConge,
+    Contrat{TypeContrat(Nom)} to TypeContrat,
+}
+
+//relationship OneToOne {
+	//Departement{salarie(Nom)} to Salarie
+//}
+
+relationship OneToMany {
+	Salarie to DemandeConge,
+    Salarie to Contrat,
+}
+
+// relationship OneToOne {
+ 	//Salarie{user(login)} to User
+// } 
+
+// Set pagination options
+//paginate RHAdmin, Salarie with infinite-scroll
+paginate Salarie, Departement, Poste, Contrat, TypeContrat, DemandeConge, TypeConge with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+//except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

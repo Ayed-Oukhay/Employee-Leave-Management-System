@@ -1,0 +1,29 @@
+{
+  "name": "Contrat",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeContrat",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "typeContrat",
+      "otherEntityField": "nom"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "salarie",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "salarie"
+    }
+  ],
+  "entityTableName": "contrat",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210809110556"
+}

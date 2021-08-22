@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="salarie">
+      <h2 data-cy="salarieDetailsHeading"><span jhiTranslate="stageApp.salarie.detail.title">Salarie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ salarie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.nom">Nom</span></dt>
+        <dd>
+          <span>{{ salarie.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ salarie.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.login">Login</span></dt>
+        <dd>
+          <span>{{ salarie.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.email">Email</span></dt>
+        <dd>
+          <span>{{ salarie.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.manager">Manager</span></dt>
+        <dd>
+          <span>{{ salarie.manager }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.role">Role</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'stageApp.Role.' + salarie.role }}">{{ salarie.role }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.actif">Actif</span></dt>
+        <dd>
+          <span>{{ salarie.actif }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ salarie.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.iDEntreprise">I D Entreprise</span></dt>
+        <dd>
+          <span>{{ salarie.iDEntreprise }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.lDAPPath">L DAP Path</span></dt>
+        <dd>
+          <span>{{ salarie.lDAPPath }}</span>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.departement">Departement</span></dt>
+        <dd>
+          <div *ngIf="salarie.departement">
+            <a [routerLink]="['/departement', salarie.departement?.id, 'view']">{{ salarie.departement?.nom }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="stageApp.salarie.poste">Poste</span></dt>
+        <dd>
+          <div *ngIf="salarie.poste">
+            <a [routerLink]="['/poste', salarie.poste?.id, 'view']">{{ salarie.poste?.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/salarie', salarie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "stageApp": {
+    "typeConge": {
+      "home": {
+        "title": "TypeConges",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Conge",
+        "createOrEditLabel": "Créer ou éditer un Type Conge",
+        "notFound": "Aucun Type Conge trouvé"
+      },
+      "created": "Un nouveau Type Conge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Conge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Conge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Conge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Conge"
+      },
+      "id": "ID",
+      "nom": "Nom"
+    }
+  }
+}

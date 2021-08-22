@@ -1,0 +1,51 @@
+{
+  "name": "DemandeConge",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duree",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "raison",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Etat",
+      "fieldValues": "Accepte,Refuse,En_cours_de_traitement"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeConge",
+      "otherEntityRelationshipName": "demandeConge",
+      "relationshipName": "typeConge",
+      "otherEntityField": "nom"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "salarie",
+      "otherEntityRelationshipName": "demandeConge",
+      "relationshipName": "salarie"
+    }
+  ],
+  "entityTableName": "demande_conge",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210809110558"
+}

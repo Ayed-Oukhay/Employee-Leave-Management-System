@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="SalarieHeading">
+    <span jhiTranslate="stageApp.salarie.home.title">Salaries</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="stageApp.salarie.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-salarie"
+        [routerLink]="['/salarie/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="stageApp.salarie.home.createLabel"> Create a new Salarie </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="salaries?.length === 0">
+    <span jhiTranslate="stageApp.salarie.home.notFound">No salaries found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="salaries && salaries.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nom"><span jhiTranslate="stageApp.salarie.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenom"><span jhiTranslate="stageApp.salarie.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="login"><span jhiTranslate="stageApp.salarie.login">Login</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email"><span jhiTranslate="stageApp.salarie.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="manager">
+            <span jhiTranslate="stageApp.salarie.manager">Manager</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="role"><span jhiTranslate="stageApp.salarie.role">Role</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="actif"><span jhiTranslate="stageApp.salarie.actif">Actif</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateDebut">
+            <span jhiTranslate="stageApp.salarie.dateDebut">Date Debut</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="iDEntreprise">
+            <span jhiTranslate="stageApp.salarie.iDEntreprise">I D Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lDAPPath">
+            <span jhiTranslate="stageApp.salarie.lDAPPath">L DAP Path</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="departement.nom">
+            <span jhiTranslate="stageApp.salarie.departement">Departement</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="poste.nom">
+            <span jhiTranslate="stageApp.salarie.poste">Poste</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salarie of salaries; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/salarie', salarie.id, 'view']">{{ salarie.id }}</a>
+          </td>
+          <td>{{ salarie.nom }}</td>
+          <td>{{ salarie.prenom }}</td>
+          <td>{{ salarie.login }}</td>
+          <td>{{ salarie.email }}</td>
+          <td>{{ salarie.manager }}</td>
+          <td jhiTranslate="{{ 'stageApp.Role.' + salarie.role }}">{{ salarie.role }}</td>
+          <td>{{ salarie.actif }}</td>
+          <td>{{ salarie.dateDebut | formatMediumDate }}</td>
+          <td>{{ salarie.iDEntreprise }}</td>
+          <td>{{ salarie.lDAPPath }}</td>
+          <td>
+            <div *ngIf="salarie.departement">
+              <a [routerLink]="['/departement', salarie.departement?.id, 'view']">{{ salarie.departement?.nom }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="salarie.poste">
+              <a [routerLink]="['/poste', salarie.poste?.id, 'view']">{{ salarie.poste?.nom }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/salarie', salarie.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/salarie', salarie.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(salarie)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="salaries && salaries.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

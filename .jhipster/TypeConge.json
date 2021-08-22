@@ -1,0 +1,20 @@
+{
+  "name": "TypeConge",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "type_conge",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210809110559"
+}

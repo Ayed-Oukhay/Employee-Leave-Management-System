@@ -1,13 +1,44 @@
 {
   "global": {
-    "title": "Stage",
+    "title": "Gestion Des Gonges",
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
-      "home": "Accueil",
+      "home": "accueil",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-      "entities": {
-        "main": "Entités",
+      "administration": {
+        "main": "Admin",
+        "salarie": "Liste des salaries",
+        "typeConge": "Liste des types de conges",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "hr": {
+        "main": "RH",
+        "salaries": "Liste des salaries",
+        "departement": "Liste des departements",
+        "contrat": "Liste des contrats",
+        "poste": "Liste de postes",
+        "rapport": "Rapport des conges"
+      },
+      "validation": {
+        "main": "Validation",
+        "delegation": "Delegations",
+        "colaborateur": "Mes colaborateurs",
+        "conges": "Liste des conges"
+      },
+      "request": {
+        "main": "Demandes",
+        "conges": "Liste des demandes de conges",
+        "demandeConge": "Demander un conge"
+      },
+      "calendrier": {
+        "main": "Calendrier",
+        "monCalendrier": "Mon calendrier",
+        "annuel": "Calendrier annuel",
+        "collegue": "Mes collegues",
+        "colaborateur": "Mes colaborateurs",
+        "departement": "Department",
+        "global": "Global",
+        "tabulaire": "Tabulaire"
       },
       "account": {
         "main": "Compte",

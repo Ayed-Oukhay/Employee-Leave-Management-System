@@ -1,0 +1,30 @@
+{
+  "stageApp": {
+    "demandeConge": {
+      "home": {
+        "title": "Demande Conges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Demande Conge",
+        "createOrEditLabel": "Create or edit a Demande Conge",
+        "notFound": "No Demande Conges found"
+      },
+      "created": "A new Demande Conge is created with identifier {{ param }}",
+      "updated": "A Demande Conge is updated with identifier {{ param }}",
+      "deleted": "A Demande Conge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Demande Conge {{ id }}?"
+      },
+      "detail": {
+        "title": "Demande Conge"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "duree": "Duree",
+      "raison": "Raison",
+      "etat": "Etat",
+      "typeConge": "Type Conge",
+      "salarie": "Salarie"
+    }
+  }
+}

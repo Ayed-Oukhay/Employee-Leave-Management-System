@@ -1,0 +1,137 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+  <div>
+    <div class="wrap-contact100">
+      <div class="contact100-form validate-form"></div>
+      <h3 id="jhi-demande-conge-heading" data-cy="DemandeCongeCreateUpdateHeading" style="margin-bottom: 15%">Demander un conge</h3>
+      <div class="wrap-input100 validate-input">
+        <!-- <label class="wrap-input100" jhiTranslate="stageApp.demandeConge.dateDebut" for="field_dateDebut" >Date
+          Debut</label> -->
+        <input
+          id="field_dateDebut"
+          data-cy="dateDebut"
+          [type]="dateDebutType"
+          class="wrap-input100 input100 ng-pristine ng-valid ng-touched"
+          name="dateDebut"
+          ngbDatepicker
+          #dateDebutDp="ngbDatepicker"
+          formControlName="dateDebut"
+          placeholder="Date De Debut"
+          (focus)="dateDebutType = 'date'"
+          (focusout)="dateDebutType = 'text'"
+          (change)="calculDuree()"
+          [ngClass]="{ 'is-invalid': isSaving && f.dateDebut.errors }"
+        />
+
+        <div *ngIf="isSaving && f.dateDebut.errors" class="invalid-feedback">
+          <div *ngIf="f.dateDebut.errors.required">Raison obligatoire!</div>
+        </div>
+      </div>
+      <div class="input-group">
+        <input
+          id="field_dateFin"
+          data-cy="dateFin"
+          [type]="dateFinType"
+          (change)="calculDuree()"
+          class="wrap-input100 input100 ng-pristine ng-valid ng-touched"
+          name="dateFin"
+          ngbDatepicker
+          #dateFinDp="ngbDatepicker"
+          formControlName="dateFin"
+          placeholder="Date fin"
+          (focus)="dateFinType = 'date'"
+          (focusout)="dateFinType = 'text'"
+          [ngClass]="{ 'is-invalid': isSaving && f.dateFin.errors }"
+        />
+
+        <div *ngIf="isSaving && f.dateFin.errors" class="invalid-feedback">
+          <div *ngIf="f.dateFin.errors.required">Raison obligatoire!</div>
+        </div>
+      </div>
+      <div class="wrap-input100 validate-input input100 ng-pristine ng-valid ng-touched" data-validate="duration is required">
+        {{ duree }}
+        <!-- <span class="focus-input100"></span> -->
+      </div>
+      <div class="wrap-input100 validate-input">
+        <input
+          type="text"
+          class="input100"
+          placeholder="Raison"
+          name="raison"
+          id="field_raison"
+          data-cy="raison"
+          formControlName="raison"
+          [ngClass]="{ 'is-invalid': isSaving && f.raison.errors }"
+        />
+        <div *ngIf="isSaving && f.raison.errors" class="invalid-feedback">
+          <div *ngIf="f.raison.errors.required">Raison obligatoire!</div>
+        </div>
+        <!-- <span class="focus-input100"></span> -->
+      </div>
+      <div class="wrap-input100 input100-select">
+        <label class="label-input100" jhiTranslate="stageApp.demandeConge.etat" for="field_etat">Etat</label>
+        <div>
+          <input
+            type="checkbox"
+            id="scales"
+            name="scales"
+            name="etat"
+            formControlName="Etat"
+            [ngClass]="{ 'is-invalid': isSaving && f.Etat.errors }"
+          />
+          <label for="scales">Requested</label>
+          <div *ngIf="isSaving && f.Etat.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+        </div>
+        <!-- <span class="focus-input100"></span> -->
+      </div>
+      <div class="wrap-input100 input100-select">
+        <div>
+          <select class="selection-2" id="field_typeConge" data-cy="typeConge" name="typeConge" formControlName="typeConge">
+            <option [ngValue]="null" selected>Type de conge</option>
+            <option
+              [ngValue]="typeCongeOption.id === editForm.get('typeConge')!.value?.id ? editForm.get('typeConge')!.value : typeCongeOption"
+              *ngFor="let typeCongeOption of typeCongesSharedCollection; trackBy: trackTypeCongeById"
+            >
+              {{ typeCongeOption.nom }}
+            </option>
+          </select>
+        </div>
+        <!-- <span class="focus-input100"></span> -->
+      </div>
+
+      <div>
+        <input class="favorite styled" type="submit" value="submit" style="margin-bottom: 10%" />
+        <button class="favorite styled2" type="reset" (click)="onReset()">Cancel</button>
+      </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+  </div>
+</form>
+<!-- <script>
+  // var d1 = field_dateDebut.getTime();
+  // var d2 = field_dateFin.getTime();
+  // function  duree(d1,d2){
+  //   return field_duree.value()= d2-d1;
+
+
+  // }
+
+  let d1=document.getElementById('field_dateDebut');
+  let d2=document.getElementById('field_dateFin');
+  let d3= document.getElementById('field_duree');
+  var f1  = d1.value;
+  var f2  = d2.value ;
+  
+  d1.onchange=function(){
+    result = f2-f1;
+    d3.value=result;
+    return d3.value;
+  }
+  d2.onchange=function(){
+    result = f2-f1;
+    d3.value=result;
+    return d3.value;
+
+  }
+
+
+</script> -->

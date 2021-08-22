@@ -1,13 +1,44 @@
 {
   "global": {
-    "title": "Stage",
+    "title": "Leave Management System",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-      "entities": {
-        "main": "Entities",
+      "administration": {
+        "main": "Admin",
+        "salarie": "List of users",
+        "typeConge": "List of leave types",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "hr": {
+        "main": "HR",
+        "salaries": "List of employees",
+        "departement": "List of organisation",
+        "contrat": "List of contracts",
+        "poste": "List of positions",
+        "rapport": "Leave report"
+      },
+      "validation": {
+        "main": "Validation",
+        "delegation": "Delegations",
+        "colaborateur": "My collaborators",
+        "conges": "List of Leaves"
+      },
+      "request": {
+        "main": "Requests",
+        "conges": "List of leave requests",
+        "demandeConge": "Request a leave"
+      },
+      "calendrier": {
+        "main": "Calendars",
+        "monCalendrier": "My calendar",
+        "annuel": "Yearly calendar",
+        "collegue": "My workmates",
+        "colaborateur": "My collaborators",
+        "departement": "Department",
+        "global": "Global",
+        "tabulaire": "Tabular"
       },
       "account": {
         "main": "Account",
