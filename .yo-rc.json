@@ -45,7 +45,7 @@
     "clientThemeVariant": "",
     "reactive": false,
     "entities": ["Salarie", "Departement", "Poste", "Contrat", "TypeContrat", "DemandeConge", "TypeConge"],
-    "lastLiquibaseTimestamp": 1628507159000
+    "lastLiquibaseTimestamp": 1628459266000
   },
   "git-provider": "GitHub",
   "git-company": "Ayed-Oukhay",

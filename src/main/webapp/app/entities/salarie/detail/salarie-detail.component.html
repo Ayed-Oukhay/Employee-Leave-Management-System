@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="salarie">
-      <h2 data-cy="salarieDetailsHeading"><span jhiTranslate="stageApp.salarie.detail.title">Salarie</span></h2>
+      <!-- <h2 data-cy="salarieDetailsHeading"><span jhiTranslate="stageApp.salarie.detail.title">Salarie</span></h2> -->
 
       <hr />
 
@@ -72,7 +72,12 @@
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
 
-      <button type="button" [routerLink]="['/salarie', salarie.id, 'edit']" class="btn btn-primary">
+      <button
+        type="button"
+        [routerLink]="['/salarie', salarie.id, 'edit']"
+        class="btn btn-primary"
+        style="background-color: #1a214d; color: #fff"
+      >
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>

@@ -45,9 +45,7 @@ public class SalarieServiceImpl implements SalarieService {
     ) {
         this.salarieRepository = salarieRepository;
         this.userRepository = userRepository;
-
         this.passwordEncoder = passwordEncoder;
-
         this.authorityRepository = authorityRepository;
     }
 
@@ -55,41 +53,25 @@ public class SalarieServiceImpl implements SalarieService {
     public Salarie save(Salarie salarie) {
         log.debug("Request to save Salarie : {}", salarie);
         /* Création d'un nouveau user au même temps */
-
         User user = new User();
-
         user.setLogin(salarie.getLogin().toLowerCase());
-
         user.setFirstName(salarie.getPrenom());
-
         user.setLastName(salarie.getNom());
-
         user.setEmail(salarie.getEmail().toLowerCase());
-
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
-
         user.setPassword(encryptedPassword);
-
         user.setResetKey(RandomUtil.generateResetKey());
-
         user.setResetDate(Instant.now());
-
         user.setActivated(true);
-
         Set<Authority> authorities = new HashSet<>();
-
         if (salarie.getRole() == salarie.getRole().ROLE_ADMIN) {
             authorityRepository.findById(AuthoritiesConstants.ADMIN).ifPresent(authorities::add);
         } else {
             authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         }
-
         user.setAuthorities(authorities);
-
         User savedUser = userRepository.save(user);
-
         /* ------------------- */
-
         salarie.setUser(savedUser);
         return salarieRepository.save(salarie);
     }

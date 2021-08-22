@@ -347,30 +347,25 @@
           </li>
         </ul>
       </li>
+      <!-- End Language menu -->
+
+      <!-- Beginning the Account Menu -->
       <li
+        class="dropdown"
         ngbDropdown
         class="nav-item dropdown pointer"
         display="dynamic"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
-          <span *ngIf="!account?.imageUrl">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
             <fa-icon icon="user"></fa-icon>
             <span jhiTranslate="global.menu.account.main">Account</span>
           </span>
-          <span *ngIf="account?.imageUrl">
-            <img [src]="account!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
-          </span>
         </a>
-        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
-          <li *ngSwitchCase="true">
-            <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()" data-cy="settings">
-              <fa-icon icon="wrench" [fixedWidth]="true"></fa-icon>
-              <span jhiTranslate="global.menu.account.settings">Settings</span>
-            </a>
-          </li>
-          <li *ngSwitchCase="true">
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">
             <a
               class="dropdown-item"
               routerLink="account/password"
@@ -379,29 +374,26 @@
               data-cy="passwordItem"
             >
               <fa-icon icon="lock" [fixedWidth]="true"></fa-icon>
-              <span jhiTranslate="global.menu.account.password">Password</span>
+              <span jhiTranslate="global.menu.account.password">Change password</span>
             </a>
           </li>
-          <li *ngSwitchCase="true">
+          <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">
             <a class="dropdown-item" (click)="logout()" id="logout" data-cy="logout">
               <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
               <span jhiTranslate="global.menu.account.logout">Sign out</span>
             </a>
           </li>
-          <li *ngSwitchCase="false">
+          <li *jhiHasAnyAuthority="''">
             <a class="dropdown-item" (click)="login()" id="login" data-cy="login">
               <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
               <span jhiTranslate="global.menu.account.login">Sign in</span>
             </a>
           </li>
-          <li *ngSwitchCase="false">
-            <a class="dropdown-item" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()" data-cy="register">
-              <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
-              <span jhiTranslate="global.menu.account.register">Register</span>
-            </a>
-          </li>
         </ul>
       </li>
+      <!-- End Account Menu -->
     </ul>
   </div>
 </nav>
+<br /><br /><br /><br /><br />
+<!-- End Header -->

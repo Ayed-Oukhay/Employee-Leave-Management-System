@@ -40,6 +40,10 @@ export class MainComponent implements OnInit {
     });
   }
 
+  isConnected(): any {
+    return sessionStorage.getItem('jhi-authenticationToken');
+  }
+
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot): string {
     let title: string = routeSnapshot.data['pageTitle'] ?? '';
     if (routeSnapshot.firstChild) {

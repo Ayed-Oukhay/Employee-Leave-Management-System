@@ -1,0 +1,125 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <!-- <h2
+        id="jhi-demande-conge-heading"
+        data-cy="DemandeCongeCreateUpdateHeading"
+        jhiTranslate="stageApp.demandeConge.home.createOrEditLabel"
+      >
+        Create or edit a Demande Conge
+      </h2> -->
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="input-group">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="text"
+              class="form-control"
+              name="dateDebut"
+              ngbDatepicker
+              #dateDebutDp="ngbDatepicker"
+              formControlName="dateDebut"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.dateFin" for="field_dateFin">Date Fin</label>
+          <div class="input-group">
+            <input
+              id="field_dateFin"
+              data-cy="dateFin"
+              type="text"
+              class="form-control"
+              name="dateFin"
+              ngbDatepicker
+              #dateFinDp="ngbDatepicker"
+              formControlName="dateFin"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateFinDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.duree" for="field_duree">Duree</label>
+          <input type="number" class="form-control" name="duree" id="field_duree" data-cy="duree" formControlName="duree" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.raison" for="field_raison">Raison</label>
+          <input type="text" class="form-control" name="raison" id="field_raison" data-cy="raison" formControlName="raison" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.etat" for="field_etat">Etat</label>
+          <select class="form-control" name="etat" formControlName="etat" id="field_etat" data-cy="etat">
+            <option [ngValue]="null">{{ 'stageApp.Etat.null' | translate }}</option>
+            <option *jhiHasAnyAuthority="'ROLE_ADMIN'" value="Accepte">{{ 'stageApp.Etat.Accepte' | translate }}</option>
+            <option *jhiHasAnyAuthority="'ROLE_ADMIN'" value="Refuse">{{ 'stageApp.Etat.Refuse' | translate }}</option>
+            <option value="En_cours_de_traitement">{{ 'stageApp.Etat.En_cours_de_traitement' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.typeConge" for="field_typeConge">Type Conge</label>
+          <select class="form-control" id="field_typeConge" data-cy="typeConge" name="typeConge" formControlName="typeConge">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="typeCongeOption.id === editForm.get('typeConge')!.value?.id ? editForm.get('typeConge')!.value : typeCongeOption"
+              *ngFor="let typeCongeOption of typeCongesSharedCollection; trackBy: trackTypeCongeById"
+            >
+              {{ typeCongeOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.demandeConge.salarie" for="field_salarie">Salarie</label>
+          <select class="form-control" id="field_salarie" data-cy="salarie" name="salarie" formControlName="salarie">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="salarieOption.id === editForm.get('salarie')!.value?.id ? editForm.get('salarie')!.value : salarieOption"
+              *ngFor="let salarieOption of salariesSharedCollection; trackBy: trackSalarieById"
+            >
+              {{ salarieOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+          style="background-color: #1a214d; color: #fff"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

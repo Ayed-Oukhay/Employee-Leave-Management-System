@@ -1,6 +1,9 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { SessionStorageService } from 'ngx-webstorage';
+import { LANGUAGES } from 'app/config/language.constants';
 
 import { LoginService } from 'app/login/login.service';
 import { AccountService } from 'app/core/auth/account.service';
@@ -14,6 +17,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   username!: ElementRef;
 
   authenticationError = false;
+  languages = LANGUAGES;
 
   loginForm = this.fb.group({
     username: [null, [Validators.required]],
@@ -23,6 +27,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   constructor(
     private accountService: AccountService,
+    private translateService: TranslateService,
+    private sessionStorageService: SessionStorageService,
     private loginService: LoginService,
     private router: Router,
     private fb: FormBuilder
@@ -39,6 +45,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.username.nativeElement.focus();
+  }
+
+  changeLanguage(languageKey: string): void {
+    this.sessionStorageService.store('locale', languageKey);
+    this.translateService.use(languageKey);
   }
 
   login(): void {

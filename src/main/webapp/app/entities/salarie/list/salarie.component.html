@@ -1,17 +1,18 @@
 <div>
   <h2 id="page-heading" data-cy="SalarieHeading">
-    <span jhiTranslate="stageApp.salarie.home.title">Salaries</span>
+    <!-- <span jhiTranslate="stageApp.salarie.home.title">Salaries</span> -->
 
     <div class="d-flex justify-content-end">
-      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+      <!-- <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="stageApp.salarie.home.refreshListLabel">Refresh List</span>
-      </button>
+      </button> -->
 
       <button
         id="jh-create-entity"
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-salarie"
+        style="background-color: #27274e; color: #fff"
         [routerLink]="['/salarie/new']"
       >
         <fa-icon icon="plus"></fa-icon>
@@ -23,38 +24,52 @@
   <jhi-alert-error></jhi-alert-error>
 
   <jhi-alert></jhi-alert>
-
+  <br /><br />
   <div class="alert alert-warning" id="no-result" *ngIf="salaries?.length === 0">
     <span jhiTranslate="stageApp.salarie.home.notFound">No salaries found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="salaries && salaries.length > 0">
+  <div class="table-responsive" id="entities" *ngIf="salaries && salaries.length > 0" style="min-width: 166px">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="nom"><span jhiTranslate="stageApp.salarie.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="prenom"><span jhiTranslate="stageApp.salarie.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="login"><span jhiTranslate="stageApp.salarie.login">Login</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="email"><span jhiTranslate="stageApp.salarie.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="manager">
-            <span jhiTranslate="stageApp.salarie.manager">Manager</span> <fa-icon icon="sort"></fa-icon>
+          <th scope="col" jhiSortBy="id" style="min-width: 50px">
+            <span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="role"><span jhiTranslate="stageApp.salarie.role">Role</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="actif"><span jhiTranslate="stageApp.salarie.actif">Actif</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="dateDebut">
+          <th scope="col" jhiSortBy="nom" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.nom">Nom</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenom" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="login" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.login">Login</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <!-- <th scope="col" jhiSortBy="manager">
+            <span jhiTranslate="stageApp.salarie.manager">Manager</span> <fa-icon icon="sort"></fa-icon>
+          </th> -->
+          <th scope="col" jhiSortBy="role" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.role">Role</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="actif" style="min-width: 50px">
+            <span jhiTranslate="stageApp.salarie.actif">Actif</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateDebut" style="min-width: 50px">
             <span jhiTranslate="stageApp.salarie.dateDebut">Date Debut</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="iDEntreprise">
+          <th scope="col" jhiSortBy="iDEntreprise" style="min-width: 50px">
             <span jhiTranslate="stageApp.salarie.iDEntreprise">I D Entreprise</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="lDAPPath">
+          <!-- <th scope="col" jhiSortBy="lDAPPath">
             <span jhiTranslate="stageApp.salarie.lDAPPath">L DAP Path</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="departement.nom">
+          </th> -->
+          <th scope="col" jhiSortBy="departement.nom" style="min-width: 50px">
             <span jhiTranslate="stageApp.salarie.departement">Departement</span> <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" jhiSortBy="poste.nom">
+          <th scope="col" jhiSortBy="poste.nom" style="min-width: 50px">
             <span jhiTranslate="stageApp.salarie.poste">Poste</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col"></th>
@@ -62,62 +77,48 @@
       </thead>
       <tbody>
         <tr *ngFor="let salarie of salaries; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <td style="min-width: 50px">
             <a [routerLink]="['/salarie', salarie.id, 'view']">{{ salarie.id }}</a>
           </td>
-          <td>{{ salarie.nom }}</td>
-          <td>{{ salarie.prenom }}</td>
-          <td>{{ salarie.login }}</td>
-          <td>{{ salarie.email }}</td>
-          <td>{{ salarie.manager }}</td>
-          <td jhiTranslate="{{ 'stageApp.Role.' + salarie.role }}">{{ salarie.role }}</td>
-          <td>{{ salarie.actif }}</td>
-          <td>{{ salarie.dateDebut | formatMediumDate }}</td>
-          <td>{{ salarie.iDEntreprise }}</td>
-          <td>{{ salarie.lDAPPath }}</td>
-          <td>
+          <td style="min-width: 50px">{{ salarie.nom }}</td>
+          <td style="min-width: 50px">{{ salarie.prenom }}</td>
+          <td style="min-width: 50px">{{ salarie.login }}</td>
+          <td style="min-width: 50px">{{ salarie.email }}</td>
+          <!-- <td>{{ salarie.manager }}</td> -->
+          <td jhiTranslate="{{ 'stageApp.Role.' + salarie.role }}" style="min-width: 50px">{{ salarie.role }}</td>
+          <td style="min-width: 50px">{{ salarie.actif }}</td>
+          <td style="min-width: 50px">{{ salarie.dateDebut | formatMediumDate }}</td>
+          <td style="min-width: 50px">{{ salarie.iDEntreprise }}</td>
+          <!-- <td>{{ salarie.lDAPPath }}</td> -->
+          <td style="min-width: 50px">
             <div *ngIf="salarie.departement">
               <a [routerLink]="['/departement', salarie.departement?.id, 'view']">{{ salarie.departement?.nom }}</a>
             </div>
           </td>
-          <td>
+          <td style="min-width: 50px">
             <div *ngIf="salarie.poste">
               <a [routerLink]="['/poste', salarie.poste?.id, 'view']">{{ salarie.poste?.nom }}</a>
             </div>
           </td>
-          <td class="text-right">
+          <td class="text-right" style="min-width: 50px">
             <div class="btn-group">
-              <button
-                type="submit"
+              <fa-icon
+                icon="eye"
                 [routerLink]="['/salarie', salarie.id, 'view']"
-                class="btn btn-info btn-sm"
                 data-cy="entityDetailsButton"
-              >
-                <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-              </button>
+                style="cursor: pointer; padding-right: 20px"
+              ></fa-icon>
 
-              <button
-                type="submit"
-                [routerLink]="['/salarie', salarie.id, 'edit']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-              </button>
+              <fa-icon icon="pencil-alt" style="cursor: pointer; padding-right: 20px"></fa-icon>
 
-              <button type="submit" (click)="delete(salarie)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-              </button>
+              <fa-icon icon="times" style="cursor: pointer; padding-right: 20px"></fa-icon>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
+  <br /><br />
   <div *ngIf="salaries && salaries.length > 0">
     <div class="row justify-content-center">
       <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
@@ -136,3 +137,4 @@
     </div>
   </div>
 </div>
+<br /><br />

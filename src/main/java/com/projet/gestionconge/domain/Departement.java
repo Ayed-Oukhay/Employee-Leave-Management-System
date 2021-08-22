@@ -22,6 +22,12 @@ public class Departement implements Serializable {
     @Column(name = "nom")
     private String nom;
 
+    /* @OneToMany
+    private List<Salarie> listSalaries; 
+    
+    @Column(name= "superviseur")
+    private Salarie superviseur; */
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -48,6 +54,22 @@ public class Departement implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    /* public List<Salarie> getListSalaries(){
+        return this.listSalaries;
+    }
+
+    public void setListSalaries(List<Salarie> listSalaries){
+        this.listSalaries=listSalaries;
+    }
+
+    public Salarie getSuperviseur(){
+        return this.superviseur;
+    }
+
+    public void setSuperviseur(Salarie superviseur){
+        this.superviseur=superviseur;
+    } */
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

@@ -80,22 +80,6 @@ public class Salarie implements Serializable {
     private Authority auth;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setAuth(Authority auth) {
-        this.auth = auth;
-    }
-
-    public Authority getAuth() {
-        return this.auth;
-    }
-
     public Long getId() {
         return id;
     }
@@ -325,6 +309,22 @@ public class Salarie implements Serializable {
 
     public void setPoste(Poste poste) {
         this.poste = poste;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setAuth(Authority auth) {
+        this.auth = auth;
+    }
+
+    public Authority getAuth() {
+        return this.auth;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

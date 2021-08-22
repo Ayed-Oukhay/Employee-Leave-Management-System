@@ -1,11 +1,12 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
+    "title": "Welcome, To TESSI Leave Managelent System!",
     "subtitle": "This is your homepage",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
-    "question": "If you have any question on JHipster:",
+    "question": "About TESSI:",
+    "subquestion": "Votre partenaire Business Process Services alliant services et technologies",
     "link": {
       "homepage": "JHipster homepage",
       "stackoverflow": "JHipster on Stack Overflow",
