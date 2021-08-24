@@ -47,4 +47,13 @@ public interface DemandeCongeService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Get all the demandeConges by connected manager.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    /*Page<DemandeConge> findByManager(Pageable pageable);*/
+
 }

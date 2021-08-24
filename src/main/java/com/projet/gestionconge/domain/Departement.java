@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Departement.
@@ -22,9 +24,11 @@ public class Departement implements Serializable {
     @Column(name = "nom")
     private String nom;
 
-    /* @OneToMany
+    @JsonIgnore
+    @OneToMany(cascade=CascadeType.REMOVE)
     private List<Salarie> listSalaries; 
-    
+
+    /*
     @Column(name= "superviseur")
     private Salarie superviseur; */
 

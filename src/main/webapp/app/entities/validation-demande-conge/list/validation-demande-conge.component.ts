@@ -53,6 +53,10 @@ export class DemandeCongeComponent implements OnInit {
       );
   }
 
+  /* FilteredList():void {
+    this.demandeCongeService.findByManager(Pageable pageable);
+  } */
+
   ngOnInit(): void {
     this.handleNavigation();
   }

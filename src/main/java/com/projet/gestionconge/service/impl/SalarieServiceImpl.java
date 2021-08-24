@@ -76,6 +76,41 @@ public class SalarieServiceImpl implements SalarieService {
     public Optional<Salarie> partialUpdate(Salarie salarie) {
         log.debug("Request to partially update Salarie : {}", salarie);
 
+        /* Updating the attached user entity */
+        Long IdU = salarie.getUser().getId();
+        userRepository.findById(IdU).map(
+            existingUser -> {
+                if (salarie.getNom() != null) {
+                        existingUser.setLastName(salarie.getNom());
+                    }
+                if (salarie.getPrenom() != null) {
+                        existingUser.setFirstName(salarie.getPrenom());
+                    }
+                if (salarie.getLogin() != null) {
+                        existingUser.setLogin(salarie.getLogin());
+                    }
+                if (salarie.getEmail() != null) {
+                        existingUser.setEmail(salarie.getEmail());
+                    }
+                Set<Authority> authorities = new HashSet<>();
+                if (salarie.getRole() != null) {
+                        if (salarie.getRole() == salarie.getRole().ROLE_ADMIN){
+                            authorityRepository.findById(AuthoritiesConstants.ADMIN).ifPresent(authorities::add);
+                        }
+                        else {
+                            authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+                        }
+                        existingUser.setAuthorities(authorities);
+                    }
+                if (salarie.getActif() != null) {
+                        existingUser.setActivated(salarie.getActif());
+                    }
+                return existingUser;
+            }
+
+        ).map(userRepository::save);
+        /* End updating the user entity */
+
         return salarieRepository
             .findById(salarie.getId())
             .map(
@@ -134,6 +169,13 @@ public class SalarieServiceImpl implements SalarieService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete Salarie : {}", id);
+
+        /* Deleting the attached user */
+        /* Salarie s = salarieRepository.findById(id);
+        Long UId = s.getUser().getId();
+        userRepository.deleteById(UId); */
+        /* End Deleting the attached user */
+
         salarieRepository.deleteById(id);
     }
 }

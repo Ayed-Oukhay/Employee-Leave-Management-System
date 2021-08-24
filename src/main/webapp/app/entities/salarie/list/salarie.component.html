@@ -92,9 +92,9 @@
                 <fa-icon icon="eye" [routerLink]="['/salarie', salarie.id, 'view']"
                 data-cy="entityDetailsButton" style="cursor: pointer;padding-right: 20px;"></fa-icon>
               
-                <fa-icon icon="pencil-alt"  style="cursor: pointer;padding-right: 20px;"></fa-icon>
+                <fa-icon icon="pencil-alt" [routerLink]="['/salarie', salarie.id, 'edit']" style="cursor: pointer;padding-right: 20px;"></fa-icon>
              
-                <fa-icon icon="times"  style="cursor: pointer;padding-right: 20px;"></fa-icon>
+                <fa-icon icon="times" (click)="delete(salarie)" style="cursor: pointer;padding-right: 20px;"></fa-icon>
 
             </div>
           </td>

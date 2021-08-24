@@ -37,7 +37,7 @@ public class Salarie implements Serializable {
     private String email;
 
     @Column(name = "manager")
-    private String manager;
+    private String[] manager;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -55,12 +55,12 @@ public class Salarie implements Serializable {
     @Column(name = "l_dap_path")
     private String lDAPPath;
 
-    @OneToMany(mappedBy = "salarie")
+    @OneToMany(mappedBy = "salarie", cascade=CascadeType.REMOVE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "typeConge", "salarie" }, allowSetters = true)
     private Set<DemandeConge> demandeConges = new HashSet<>();
 
-    @OneToMany(mappedBy = "salarie")
+    @OneToMany(mappedBy = "salarie", cascade=CascadeType.REMOVE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "typeContrat", "salarie" }, allowSetters = true)
     private Set<Contrat> contrats = new HashSet<>();
@@ -71,13 +71,13 @@ public class Salarie implements Serializable {
     @ManyToOne
     private Poste poste;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.REMOVE)
     @JoinColumn(name="id_user", referencedColumnName = "id")
     private User user;
 
-    @OneToOne
-    @JoinColumn(name="authority", referencedColumnName = "name")
-    private Authority auth;
+    // @OneToOne(cascade=CascadeType.ALL)
+    // @JoinColumn(name="authority", referencedColumnName = "name")
+    // private Authority auth;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -319,13 +319,13 @@ public class Salarie implements Serializable {
         return this.user;
     }
 
-    public void setAuth(Authority auth){
+   /*  public void setAuth(Authority auth){
         this.auth = auth;
     }
 
     public Authority getAuth() {
         return this.auth;
-    }
+    } */
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

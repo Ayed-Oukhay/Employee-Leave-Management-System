@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Poste.
@@ -24,6 +26,10 @@ public class Poste implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @JsonIgnore
+    @OneToMany(cascade=CascadeType.REMOVE)
+    private List<Salarie> listSalaries; 
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
