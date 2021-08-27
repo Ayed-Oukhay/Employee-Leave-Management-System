@@ -21,6 +21,7 @@ export class SalarieUpdateComponent implements OnInit {
 
   departementsSharedCollection: IDepartement[] = [];
   postesSharedCollection: IPoste[] = [];
+  salariesSharedCollection: ISalarie[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -76,6 +77,10 @@ export class SalarieUpdateComponent implements OnInit {
     return item.id!;
   }
 
+  trackSalarieById(index: number, item: ISalarie): number {
+    return item.id!;
+  }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISalarie>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe(
       () => this.onSaveSuccess(),
@@ -112,11 +117,17 @@ export class SalarieUpdateComponent implements OnInit {
       poste: salarie.poste,
     });
 
+    this.salariesSharedCollection = this.salarieService.addSalarieToCollectionIfMissing(
+      this.salariesSharedCollection, 
+      salarie.manager
+    );
+
     this.departementsSharedCollection = this.departementService.addDepartementToCollectionIfMissing(
       this.departementsSharedCollection,
       salarie.departement
     );
     this.postesSharedCollection = this.posteService.addPosteToCollectionIfMissing(this.postesSharedCollection, salarie.poste);
+
   }
 
   protected loadRelationshipsOptions(): void {
@@ -135,6 +146,13 @@ export class SalarieUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IPoste[]>) => res.body ?? []))
       .pipe(map((postes: IPoste[]) => this.posteService.addPosteToCollectionIfMissing(postes, this.editForm.get('poste')!.value)))
       .subscribe((postes: IPoste[]) => (this.postesSharedCollection = postes));
+
+    this.salarieService
+    .query()
+      .pipe(map((res: HttpResponse<ISalarie[]>) => res.body ?? []))
+      .pipe(map((salaries: ISalarie[]) => this.salarieService.addSalarieToCollectionIfMissing(salaries, this.editForm.get('salarie')!.value)))
+      .subscribe((salaries: ISalarie[]) => (this.salariesSharedCollection = salaries));
+
   }
 
   protected createFromForm(): ISalarie {

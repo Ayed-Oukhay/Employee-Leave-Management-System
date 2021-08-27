@@ -49,7 +49,7 @@ public interface DemandeCongeService {
     void delete(Long id);
 
     /**
-     * Get all the demandeConges by connected manager.
+     * Get all the demandeConges based on the connected manager.
      *
      * @param pageable the pagination information.
      * @return the list of entities.

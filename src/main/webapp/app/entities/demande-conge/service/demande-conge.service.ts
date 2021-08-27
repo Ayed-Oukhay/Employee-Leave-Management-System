@@ -104,18 +104,4 @@ export class DemandeCongeService {
     return res;
   }
 
-  /* protected Any<DemandeConge> findByManager(Pageable pageable) {
-    log.debug("Request to get DemandeConges based on the connected HR Admin");
-    List<DemandeConge> filteredRepo = demandeCongeRepository.findAll(pageable);
-    for (DemandeConge d:demandeCongeRepository.findAll(pageable)){
-        Long idS = d.getSalarie().getId();
-        Salarie s = salarieRepository.findOne(idS);
-        String manager = s.getManager();
-        if (manager=="admin"){
-            filteredRepo.add(d);
-      }
-    }
-    return demandeCongeRepository.findByManager(pageable);
-  } */
-
 }

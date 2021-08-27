@@ -31,6 +31,7 @@ export class DemandeCongeComponent implements OnInit {
     protected modalService: NgbModal
   ) {}
 
+
   loadPage(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;

@@ -33,9 +33,21 @@
           <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="form-control-label" jhiTranslate="stageApp.salarie.manager" for="field_manager">Manager</label>
           <input type="text" class="form-control" name="manager" id="field_manager" data-cy="manager" formControlName="manager" />
+        </div> -->
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="stageApp.salarie.manager" for="field_manager">Manager</label>
+          <select class="form-control" id="field_manager" data-cy="manager" name="manager" formControlName="manager">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sal.id === editForm.get('manager')!.value?.id ? editForm.get('manager')!.value : sal"
+              *ngFor="let sal of salariesSharedCollection; trackBy: trackSalarieById">
+              {{ sal.nom }} 
+            </option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -95,11 +107,8 @@
           <select class="form-control" id="field_departement" data-cy="departement" name="departement" formControlName="departement">
             <option [ngValue]="null"></option>
             <option
-              [ngValue]="
-                departementOption.id === editForm.get('departement')!.value?.id ? editForm.get('departement')!.value : departementOption
-              "
-              *ngFor="let departementOption of departementsSharedCollection; trackBy: trackDepartementById"
-            >
+              [ngValue]="departementOption.id === editForm.get('departement')!.value?.id ? editForm.get('departement')!.value : departementOption"
+                *ngFor="let departementOption of departementsSharedCollection; trackBy: trackDepartementById">
               {{ departementOption.nom }}
             </option>
           </select>

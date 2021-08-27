@@ -16,6 +16,8 @@ export type EntityArrayResponseType = HttpResponse<IDemandeConge[]>;
 @Injectable({ providedIn: 'root' })
 export class DemandeCongeService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/demande-conges');
+  protected resourceUrl1 = this.applicationConfigService.getEndpointFor('api/demande-specific-conges');
+  
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
@@ -52,6 +54,13 @@ export class DemandeCongeService {
       .get<IDemandeConge[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
+
+  // query1(req?: any): Observable<EntityArrayResponseType> {
+  //   const options = createRequestOption(req);
+  //   return this.http
+  //     .get<IDemandeConge[]>(this.resourceUrl1, { params: options, observe: 'response' })
+  //     .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  // }
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });

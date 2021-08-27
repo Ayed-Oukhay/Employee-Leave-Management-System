@@ -37,7 +37,7 @@ public class Salarie implements Serializable {
     private String email;
 
     @Column(name = "manager")
-    private String[] manager;
+    private String manager;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")

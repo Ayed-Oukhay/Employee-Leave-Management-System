@@ -11,7 +11,7 @@ export interface ISalarie {
   prenom?: string | null;
   login?: string | null;
   email?: string | null;
-  manager?: string | null;
+  manager?: ISalarie | null;
   role?: Role | null;
   actif?: boolean | null;
   dateDebut?: dayjs.Dayjs | null;
@@ -30,7 +30,7 @@ export class Salarie implements ISalarie {
     public prenom?: string | null,
     public login?: string | null,
     public email?: string | null,
-    public manager?: string | null,
+    public manager?: ISalarie | null,
     public role?: Role | null,
     public actif?: boolean | null,
     public dateDebut?: dayjs.Dayjs | null,

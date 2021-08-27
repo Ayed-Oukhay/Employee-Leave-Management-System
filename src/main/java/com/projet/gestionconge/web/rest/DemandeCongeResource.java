@@ -1,6 +1,8 @@
 package com.projet.gestionconge.web.rest;
 
 import com.projet.gestionconge.domain.DemandeConge;
+import com.projet.gestionconge.domain.Salarie;
+import com.projet.gestionconge.repository.SalarieRepository;
 import com.projet.gestionconge.repository.DemandeCongeRepository;
 import com.projet.gestionconge.service.DemandeCongeService;
 import com.projet.gestionconge.web.rest.errors.BadRequestAlertException;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
+//import org.springframework.security.*;
+import java.util.*;
 
 /**
  * REST controller for managing {@link com.projet.gestionconge.domain.DemandeConge}.
@@ -41,9 +45,12 @@ public class DemandeCongeResource {
 
     private final DemandeCongeRepository demandeCongeRepository;
 
-    public DemandeCongeResource(DemandeCongeService demandeCongeService, DemandeCongeRepository demandeCongeRepository) {
+    private final SalarieRepository salarieRepository;
+
+    public DemandeCongeResource(DemandeCongeService demandeCongeService, DemandeCongeRepository demandeCongeRepository, SalarieRepository salarieRepository) {
         this.demandeCongeService = demandeCongeService;
         this.demandeCongeRepository = demandeCongeRepository;
+        this.salarieRepository = salarieRepository;
     }
 
     /**
@@ -149,6 +156,38 @@ public class DemandeCongeResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
+
+    /**
+     * {@code GET  /demande-specific-conges} : get demandeConges based on the connected admin.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of demandeConges in body.
+     */
+    //@GetMapping("/demande-specific-conges")
+    //public ResponseEntity<List<DemandeConge>> getSpecificDemandeConges(Pageable pageable) {
+        //log.debug("REST request to get a page of specific DemandeConges");
+        /* Getting the current connected user */
+        // Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+        // String CurrentUser = auth.getFirstName();
+        // log.debug(CurrentUser);
+        /* Filtering the list of demandes based on the current connected user */
+        //Page<DemandeConge> page = new Page<DemandeConge>(); //empty list which will contain the filtered final list
+        //Page<DemandeConge> allDemandes = demandeCongeService.findAll(pageable); //Get all demandes in order to go through them
+        /* for (DemandeConge d:allDemandes){
+            Long idS = d.getSalarie().getId(); //get the id of the salarie that passed the demand
+            Optional<Salarie> s = salarieRepository.findById(idS); //get that salarie from the list of the salaries
+            String manager = s.get().getManager(); //get the manager of that salarie
+            if (manager=="admin"){
+                page.add(d); //add the demand into the validation page
+            }
+        } */
+        /* HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent()); //return the page */
+    //}
+
+    /* final int start = (int)pageable.getOffset();
+    final int end = Math.min((start + pageable.getPageSize()), users.size());
+    final Page<User> page = new PageImpl<>(users.subList(start, end), pageable, users.size()); */
 
     /**
      * {@code GET  /demande-conges/:id} : get the "id" demandeConge.

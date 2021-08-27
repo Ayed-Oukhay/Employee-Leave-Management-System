@@ -93,7 +93,7 @@ public class DemandeCongeServiceImpl implements DemandeCongeService {
         demandeCongeRepository.deleteById(id);
     }
 
-    @Override
+   /* @Override
     @Transactional(readOnly = true)
     public Page<DemandeConge> findByManager(Pageable pageable) {
         log.debug("Request to get DemandeConges based on the connected HR Admin");
@@ -105,10 +105,10 @@ public class DemandeCongeServiceImpl implements DemandeCongeService {
             if (manager=="admin"){
                 filteredRepo.add(d);
             } 
-        }
+        }*/
         /*-----------------------------------------*/
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
-        String CurrentUser = auth.getLogin();
+        /* Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+        String CurrentUser = auth.getLogin(); */
         
         
         /* List<DemandeConge> filteredRepo = new List<DemandeConge>();
@@ -118,6 +118,6 @@ public class DemandeCongeServiceImpl implements DemandeCongeService {
             }
         } 
         return filteredRepo.findAll(pageable);
-        return demandeCongeRepository.findByManager(pageable);
-    }
+        return demandeCongeRepository.findByManager(pageable); 
+    }*/
 }
